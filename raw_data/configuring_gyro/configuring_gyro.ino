@@ -16,7 +16,7 @@ char* convert_int16_to_str(int16_t i) { // converts int16 to string. Moreover, r
 }
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Wire.begin();
   Wire.beginTransmission(MPU_ADDR); // Begins a transmission to the I2C slave (GY-521 board)
   Wire.write(0x6B); // PWR_MGMT_1 register
@@ -38,6 +38,7 @@ void loop() {
   gyro_y = Wire.read()<<8 | Wire.read(); // reading registers: 0x45 (GYRO_YOUT_H) and 0x46 (GYRO_YOUT_L)
   gyro_z = Wire.read()<<8 | Wire.read(); // reading registers: 0x47 (GYRO_ZOUT_H) and 0x48 (GYRO_ZOUT_L)
   
+ 
   // print out data
   Serial.print("aX = "); Serial.print(convert_int16_to_str(accelerometer_x));
   Serial.print(" | aY = "); Serial.print(convert_int16_to_str(accelerometer_y));
