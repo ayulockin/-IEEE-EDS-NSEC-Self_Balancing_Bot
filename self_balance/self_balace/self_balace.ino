@@ -83,12 +83,18 @@ float base_x_gyro;
 float base_y_gyro;
 float base_z_gyro;
 
+// Degrees
+
+float angle_x;
+float angle_y;
+float angle_z;
+
 // pid parameters
 float error=0.0;
 float prev_error=0.0;
 
-float Kp=0.0;
-float Kd=0.0;
+float Kp=70.0;
+float Kd=70.0;
 float pd;
 
 float lms,rms;
@@ -98,4 +104,3 @@ int left_max = 250;
 int right_max = 250;
 int left_min = 0;
 int right_min = 0;
-

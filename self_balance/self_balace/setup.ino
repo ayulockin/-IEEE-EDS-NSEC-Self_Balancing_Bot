@@ -3,7 +3,7 @@ void setup()
   int err;
   uint8_t c;
 
-  Serial.begin(19200);
+  Serial.begin(9600);
   // Initialize the 'Wire' class for the I2C-bus.
   Wire.begin();
   
@@ -30,4 +30,3 @@ void setup()
   pinMode(rm1, OUTPUT);
   pinMode(rm2, OUTPUT);
 }
-

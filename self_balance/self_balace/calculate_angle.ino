@@ -44,37 +44,24 @@ void calculate_angle(){
   // Apply the complementary filter to figure out the change in angle - choice of alpha is
   // estimated now.  Alpha depends on the sampling rate...
   float alpha = 0.96;
-  float angle_x = alpha*gyro_angle_x + (1.0 - alpha)*accel_angle_x;
-  float angle_y = alpha*gyro_angle_y + (1.0 - alpha)*accel_angle_y;
-  float angle_z = gyro_angle_z;  //Accelerometer doesn't give z-angle
+  angle_x = alpha*gyro_angle_x + (1.0 - alpha)*accel_angle_x;
+  angle_y = alpha*gyro_angle_y + (1.0 - alpha)*accel_angle_y;
+  angle_z = gyro_angle_z;  //Accelerometer doesn't give z-angle
   
   // Update the saved data with the latest values
   set_last_read_angle_data(t_now, angle_x, angle_y, angle_z, unfiltered_gyro_angle_x, unfiltered_gyro_angle_y, unfiltered_gyro_angle_z);
   
   // Send the data to the serial port
-  Serial.print(F("DEL:"));              //Delta T
-  Serial.print(dt, DEC);
-//  Serial.print(F("#ACC:"));              //Accelerometer angle
-//  Serial.print(accel_angle_x, 2);
+//  Serial.print(F("DEL:"));              //Delta T
+//  Serial.print(dt, DEC);
+//  Serial.print(F("#FIL:"));             //Filtered angle
+//  Serial.print(angle_x, 2);
 //  Serial.print(F(","));
-//  Serial.print(accel_angle_y, 2);
+//  Serial.print(angle_y, 2);
 //  Serial.print(F(","));
-//  Serial.print(accel_angle_z, 2);
-//  Serial.print(F("#GYR:"));
-//  Serial.print(unfiltered_gyro_angle_x, 2);        //Gyroscope angle
-//  Serial.print(F(","));
-//  Serial.print(unfiltered_gyro_angle_y, 2);
-//  Serial.print(F(","));
-//  Serial.print(unfiltered_gyro_angle_z, 2);
-  Serial.print(F("#FIL:"));             //Filtered angle
-  Serial.print(angle_x, 2);
-  Serial.print(F(","));
-  Serial.print(angle_y, 2);
-  Serial.print(F(","));
-  Serial.print(angle_z, 2);
-  Serial.println(F(""));
+//  Serial.print(angle_z, 2);
+//  Serial.println(F(""));
   
   // Delay so we don't swamp the serial port
   delay(5);
 }
-
